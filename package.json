@@ -1,0 +1,17 @@
+{
+  "name": "cw2",
+  "version": "1.0.0",
+  "description": "coursework 2 ",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server",
+    "dev": "nodemon server"
+  },
+  "author": "mahitha vukkalkar",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.2",
+    "mongodb": "^4.3.1"
+  }
+}
