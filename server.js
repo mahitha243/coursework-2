@@ -3,7 +3,6 @@ var app = express();
 const path = require("path");
 const fs = require("fs");
 var cors = require('cors');
-
 //APPLICATION MIDDLEWARES
 app.use(cors())
 app.use(express.json());
@@ -26,12 +25,17 @@ app.use(function (req, res, next) {
     });
 });
 
-
-const mongoClient = require("mongodb").MongoClient;
+const {MongoClient} = require("mongodb");
 const ObjectID = require('mongodb').ObjectID;
+const uri = "mongodb+srv://mahitha:test1234@cluster0.yjqvr.mongodb.net/webstore?retryWrites=true&w=majority";
 let db;
-mongoClient.connect('mongodb+srv://MyMongoDBUser:mahitha@cluster0.yjqvr.mongodb.net/webstore?retryWrites=true&w=majority', (err, client) => {
-    db = client.db('webstore');
+MongoClient.connect(uri, (err, client) => {
+    if(!err){
+        db = client.db('webstore');
+        console.log("conncted successfully")
+    }else{
+        console.log(err);
+    }
 });
 
 
@@ -74,7 +78,7 @@ app.put('/collection/:collectionName/:id', (req, res, next) => {
 app.get('/collection/:collectionName/:query', (req, res, next) => {
 
 const query = {"$or": [
-    {'topic': {'$regex': req.params.query, '$options': 'i'}},
+    {'subject': {'$regex': req.params.query, '$options': 'i'}},
     {'location': {'$regex': req.params.query, '$options': 'i'}}
 ]};
 
