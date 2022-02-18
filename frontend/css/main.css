@@ -1,0 +1,54 @@
+.logo{
+	color: purple;
+	font-family: cursive;
+	font-weight: bold;
+}
+a{
+	color: purple;
+}
+a:hover{
+	color: purple;
+	text-decoration: none;
+}
+#star{
+	color: purple;
+}
+.custom-control-input:checked~.custom-control-label::before{
+	background-color: purple;
+	border-color: purple;
+}
+.btn-primary{
+	background-color: purple;
+	border-color: purple;
+}
+.btn-primary:hover{
+	background-color: purple;
+	border-color:purple;
+	outline: none;
+}
+.btn-primary:disabled{
+	background-color: pink;
+	border-color: pink;
+}
+.btn-primary:focus{
+	background-color: pink;
+	border-color:pink;
+	outline: none;
+}
+.btn-primary:active{
+	background-color: #DF4903;
+	border-color: #DF4903;
+	outline: none;
+}
+
+.cart-btn{
+	float: right;
+	margin-right: 35px;
+}
+.jumbotron{
+	background-color: #ffffff;
+	margin-bottom: 0;
+}
+.breadcrumb{
+	padding-left: 12.6rem;
+}
