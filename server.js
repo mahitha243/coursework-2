@@ -3,7 +3,7 @@ var app = express();
 const path = require("path");
 const fs = require("fs");
 var cors = require('cors');
-//APPLICATION MIDDLEWARES
+//APPLICATION MIDDLEWARES - logger
 app.use(cors())
 app.use(express.json());
 app.use(function (req, res, next) {
