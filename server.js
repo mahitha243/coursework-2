@@ -47,7 +47,7 @@ app.param('collectionName', (req, res, next, collectionName) => {       // gets 
 });
 
 app.get('/', (req, res, next) => {          // allows to specify a collection name in the url
-    res.send('Select a collection, e.g., /collection/messages');
+    res.send('Select a collection, e.g., /collection/lesson');
 });
 
 
