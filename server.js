@@ -3,17 +3,19 @@ var app = express();
 const path = require("path");
 const fs = require("fs");
 var cors = require('cors');
-//APPLICATION MIDDLEWARES - logger
+                                                                               //APPLICATION MIDDLEWARES - logger
 app.use(cors())
 app.use(express.json());
-app.use(function (req, res, next) {
+app.use(function (req, res, next) {                                            //request , respond and next makes the logger.
     console.log("Request URL: " + req.url);
     console.log("Request Date: " + new Date());
     next();
 });
+
+//this is the static middleware.
 app.use(function (req, res, next) {
     // Uses path.join to find the path where the file should be
-    var filePath = path.join(__dirname, 'static', req.url);
+    var filePath = path.join(__dirname, 'static', req.url);                 //so the server finds the static folder within directory.
     // Built-in fs.stat gets info about a file
     fs.stat(filePath, function (err, fileInfo) {
         if (err) {
