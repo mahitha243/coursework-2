@@ -31,9 +31,9 @@ const {MongoClient} = require("mongodb");
 const ObjectID = require('mongodb').ObjectID;
 const uri = "mongodb+srv://mahitha:test1234@cluster0.yjqvr.mongodb.net/webstore?retryWrites=true&w=majority";
 let db;
-MongoClient.connect(uri, (err, client) => {
+MongoClient.connect(uri, (err, client) => { 
     if(!err){
-        db = client.db('webstore');
+        db = client.db('webstore'); 
         console.log("conncted successfully")
     }else{
         console.log(err);
@@ -41,24 +41,24 @@ MongoClient.connect(uri, (err, client) => {
 });
 
 
-app.param('collectionName', (req, res, next, collectionName) => {
+app.param('collectionName', (req, res, next, collectionName) => {       // gets the mongodb collection name
     req.collection = db.collection(collectionName);
     return next()
 });
 
-app.get('/', (req, res, next) => {
+app.get('/', (req, res, next) => {          // allows to specify a collection name in the url
     res.send('Select a collection, e.g., /collection/messages');
 });
 
 
-app.get('/collection/:collectionName', (req, res, next) => {
+app.get('/collection/:collectionName', (req, res, next) => {        // retrieves collection
     req.collection.find({}).toArray((e, results) => {
         if (e) return next(e)
         res.send(results)
     })
 });
 
-app.post('/collection/:collectionName', (req, res, next) => {
+app.post('/collection/:collectionName', (req, res, next) => {       // adds the product information in the body of the request
     req.collection.insert(req.body, (e, results) => {
         if (e) return next(e);
         console.log(results.ops);
@@ -66,7 +66,7 @@ app.post('/collection/:collectionName', (req, res, next) => {
     })
 })
 
-app.put('/collection/:collectionName/:id', (req, res, next) => {
+app.put('/collection/:collectionName/:id', (req, res, next) => {          // retrieves an object with a specific id
     req.collection.update(
         { _id: new ObjectID(req.params.id) },
         { $set: req.body },
@@ -77,7 +77,7 @@ app.put('/collection/:collectionName/:id', (req, res, next) => {
         })
 })
 
-app.get('/collection/:collectionName/:query', (req, res, next) => {
+app.get('/collection/:collectionName/:query', (req, res, next) => {         
 
 const query = {"$or": [
     {'subject': {'$regex': req.params.query, '$options': 'i'}},
